@@ -7,17 +7,17 @@
     <string name="main_indication">Select a cutting method</string>
 
     <string name="precise_cut">Precise Cut</string>
-    <string name="custom_cut">Custom Cut</string>
+    <string name="defined_cut">Defined Cut</string>
     <string name="reverse_cut">Reverse Cut</string>
     <string name="proportional_cut">Proportional Cut</string>
 
     <string name="desc_precise_cut">Cut an object into equal-sized portions without material waste.</string>
-    <string name="desc_custom_cut">Cut an object into user-defined portion sizes, allowing for material waste.</string>
+    <string name="desc_defined_cut">Cut an object into user-defined portion sizes, allowing for material waste.</string>
     <string name="desc_reverse_cut">Determine the required material size to obtain a specific number of portions.</string>
     <string name="desc_proportional_cut">Divide an object into uneven sections based on a percentage ratio.</string>
 
     <string name="ic_desc_precise_cut">Icon representing Precise Cut</string>
-    <string name="ic_desc_custom_cut">Icon representing Custom Cut</string>
+    <string name="ic_desc_defined_cut">Icon representing Defined Cut</string>
     <string name="ic_desc_reverse_cut">Icon representing Reverse Cut</string>
     <string name="ic_desc_proportional_cut">Icon representing Proportional Cut</string>
 
