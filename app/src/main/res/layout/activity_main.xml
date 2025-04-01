@@ -51,12 +51,9 @@
 
             <ImageView
                 android:id="@+id/ic_precise"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/ic_desc_precise_cut"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/ic_launcher_background"
+                style="@style/imgCutButton"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -90,12 +87,9 @@
 
             <ImageView
                 android:id="@+id/ic_defined"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/ic_desc_defined_cut"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/ic_launcher_background"
+                style="@style/imgCutButton"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -129,12 +123,9 @@
 
             <ImageView
                 android:id="@+id/ic_reverse"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/ic_desc_reverse_cut"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/ic_launcher_background"
+                style="@style/imgCutButton"/>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -168,12 +159,9 @@
 
             <ImageView
                 android:id="@+id/ic_proportion"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="12dp"
                 android:contentDescription="@string/ic_desc_proportional_cut"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/ic_launcher_background"
+                style="@style/imgCutButton"/>
 
             <LinearLayout
                 android:layout_width="0dp"
