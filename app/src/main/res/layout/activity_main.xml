@@ -80,7 +80,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Defines Cut -->
+        <!-- Defined Cut -->
         <LinearLayout
             android:id="@+id/btn_defined"
             style="@style/CutButton">
@@ -188,4 +188,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
