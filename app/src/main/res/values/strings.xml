@@ -24,7 +24,10 @@
     
     <string name="hint_length">Length</string>
     <string name="hint_width">Width</string>
+    <string name="hint_portion_length">Portion Length</string>
+    <string name="hint_portion_width">Portion Width</string>
     <string name="hint_portions">Portions: </string>
+    <string name="hint_percentage">Percentage: </string>
 
 
 
