@@ -2,6 +2,8 @@ package com.eliudlucio.portioner
 
 import android.os.Bundle
 import android.view.View
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -31,6 +33,26 @@ class InputActivity : AppCompatActivity() {
 //                layoutProportional.visibility = View.VISIBLE
 //            }
 //        }
+
+        val valueTextView = findViewById<TextView>(R.id.tv_portions_number)
+        val portionSeekBar = findViewById<SeekBar>(R.id.portionSeekBar)
+
+        valueTextView.text = "1"
+
+        portionSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                valueTextView.text = "${progress + 1}"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // Opcional: Aquí puedes hacer algo cuando se empieza a mover el SeekBar
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // Opcional: Aquí puedes hacer algo cuando se deja de mover el SeekBar
+            }
+        })
+
 
     }
 }
