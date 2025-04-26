@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
-import com.eliudlucio.portioner.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,40 +25,34 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Forzar modo claro
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         // Establecer la Toolbar como el App Bar
         val toolbar: Toolbar = findViewById(R.id.my_toolbar)
         setSupportActionBar(toolbar)
 
-        val btnPrecise = findViewById<LinearLayout>(R.id.btn_precise)
-        btnPrecise.setOnClickListener{
-            val intent = Intent(this, InputActivity::class.java)
-            intent.putExtra(EXTRA_CUT_TYPE, PRECISE_CUT)
-            startActivity(intent)
+        // Asignar click listeners a cada botón
+        findViewById<LinearLayout>(R.id.btn_precise).setOnClickListener {
+            startInputActivity(PRECISE_CUT)
+        }
+        findViewById<LinearLayout>(R.id.btn_defined).setOnClickListener {
+            startInputActivity(DEFINED_CUT)
+        }
+        findViewById<LinearLayout>(R.id.btn_reverse).setOnClickListener {
+            startInputActivity(REVERSE_CUT)
+        }
+        findViewById<LinearLayout>(R.id.btn_proportion).setOnClickListener {
+            startInputActivity(PROPORTIONAL_CUT)
         }
 
-        val btnDefined = findViewById<LinearLayout>(R.id.btn_defined)
-        btnDefined.setOnClickListener{
-            val intent = Intent(this, InputActivity::class.java)
-            intent.putExtra(EXTRA_CUT_TYPE, DEFINED_CUT)
-            startActivity(intent)
-        }
+    }
 
-        val btnReverse = findViewById<LinearLayout>(R.id.btn_reverse)
-        btnReverse.setOnClickListener{
-            val intent = Intent(this, InputActivity::class.java)
-            intent.putExtra(EXTRA_CUT_TYPE, REVERSE_CUT)
-            startActivity(intent)
+    // Función helper para crear y lanzar InputActivity
+    private fun startInputActivity(cutType: Int) {
+        val intent = Intent(this, InputActivity::class.java).apply {
+            putExtra(EXTRA_CUT_TYPE, cutType)
         }
-
-        val btnProportional = findViewById<LinearLayout>(R.id.btn_proportion)
-        btnProportional.setOnClickListener{
-            val intent = Intent(this, InputActivity::class.java)
-            intent.putExtra(EXTRA_CUT_TYPE, PROPORTIONAL_CUT)
-            startActivity(intent)
-        }
-
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
