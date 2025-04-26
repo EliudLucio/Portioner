@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -29,216 +30,163 @@
         android:layout_marginVertical="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
 
-    <androidx.cardview.widget.CardView
+    <!-- Opciones de corte -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_indication">
+        android:orientation="vertical"
+        android:layout_marginVertical="40dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/tv_main_indication"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <!-- Precise Cut -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:id="@+id/btn_precise"
+            android:elevation="8dp"
+            style="@style/CutButton">
 
-            <!-- Precise Cut -->
+            <ImageView
+                android:id="@+id/ic_precise"
+                android:contentDescription="@string/ic_desc_precise_cut"
+                android:src="@drawable/ic_launcher_background"
+                style="@style/imgCutButton"/>
+
             <LinearLayout
-                android:id="@+id/btn_precise"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/ic_precise"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:contentDescription="@string/ic_desc_precise_cut"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_launcher_background" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tv_precise_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:text="@string/precise_cut"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tv_precise_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/precise_cut"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv_precise_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/desc_precise_cut"
-                        android:textAppearance="?attr/textAppearanceBody1"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#CCCCCC" />
-
-            <!-- Custom Cut -->
-            <LinearLayout
-                android:id="@+id/btn_custom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <ImageView
-                    android:id="@+id/ic_custom"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:contentDescription="@string/ic_desc_precise_cut"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_launcher_background" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tv_precise_description"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_custom_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/custom_cut"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv_custom_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/desc_custom_cut"
-                        android:textAppearance="?attr/textAppearanceBody1"
-                        android:textColor="@color/black" />
-                </LinearLayout>
+                    android:text="@string/desc_precise_cut"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="@color/black" />
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#CCCCCC" />
-
-            <!-- Reverse Cut -->
-            <LinearLayout
-                android:id="@+id/btn_reverse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <ImageView
-                    android:id="@+id/ic_reverse"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:contentDescription="@string/ic_desc_reverse_cut"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_launcher_background" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_reverse_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reverse_cut"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv_reverse_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/desc_reverse_cut"
-                        android:textAppearance="?attr/textAppearanceBody1"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#CCCCCC" />
-
-            <!-- Proportional Cut -->
-            <LinearLayout
-                android:id="@+id/btn_proportion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <ImageView
-                    android:id="@+id/ic_proportion"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:contentDescription="@string/ic_desc_precise_cut"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_launcher_background" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_proportion_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/proportional_cut"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv_proportion_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/desc_proportional_cut"
-                        android:textAppearance="?attr/textAppearanceBody1"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-            </LinearLayout>
-
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
+        <!-- Defined Cut -->
+        <LinearLayout
+            android:id="@+id/btn_defined"
+            style="@style/CutButton">
+
+            <ImageView
+                android:id="@+id/ic_defined"
+                android:contentDescription="@string/ic_desc_defined_cut"
+                android:src="@drawable/ic_launcher_background"
+                style="@style/imgCutButton"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_defined_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/defined_cut"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_defined_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/desc_defined_cut"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Reverse Cut -->
+        <LinearLayout
+            android:id="@+id/btn_reverse"
+            style="@style/CutButton">
+
+            <ImageView
+                android:id="@+id/ic_reverse"
+                android:contentDescription="@string/ic_desc_reverse_cut"
+                android:src="@drawable/ic_launcher_background"
+                style="@style/imgCutButton"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_reverse_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reverse_cut"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_reverse_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/desc_reverse_cut"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Proportional Cut -->
+        <LinearLayout
+            android:id="@+id/btn_proportion"
+            style="@style/CutButton">
+
+            <ImageView
+                android:id="@+id/ic_proportion"
+                android:contentDescription="@string/ic_desc_proportional_cut"
+                android:src="@drawable/ic_launcher_background"
+                style="@style/imgCutButton"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_proportion_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/proportional_cut"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_proportion_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/desc_proportional_cut"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

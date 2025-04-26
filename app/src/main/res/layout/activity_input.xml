@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".InputActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        app:titleTextColor="@color/white"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--
+    CAMPOS NECESARIOS POR CORTE
+
+    Corte Exacto:
+    - Largo objeto
+    - Ancho objeto
+    - Cantidad porciones (SeekBar)
+
+    Corte Definido:
+    - Largo objeto
+    - Ancho objeto
+    - Largo porciones
+    - Ancho porciones
+
+    Corte Inverso:
+    - Largo porciones
+    - Ancho porciones
+    - Cantidad porciones (SeekBar)
+
+    Corte Proporcional:
+    - Largo Objeto
+    - Ancho Objeto
+    - Porcentaje (SeekBar)
+
+    -->
+
+    <TextView
+        android:id="@+id/tv_input_indication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cut_indication"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/layout_input_fields"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@+id/tv_input_indication"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/et_length"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="@string/hint_length"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/et_width"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="@string/hint_width"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/et_portion_length"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="@string/hint_portion_length"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/et_portion_width"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="@string/hint_portion_width"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:padding="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_portions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_portions"
+                    android:textSize="18sp"
+                    android:paddingHorizontal="8dp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tv_portions_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/portionSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="29" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_percentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_percentage"
+                    android:textSize="18sp"
+                    android:paddingHorizontal="8dp"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tv_percentage_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
+
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/percentageSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="20" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
