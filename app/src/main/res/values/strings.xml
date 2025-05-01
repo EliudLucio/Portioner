@@ -21,14 +21,14 @@
     <string name="ic_desc_defined_cut">Icon representing Defined Cut</string>
     <string name="ic_desc_reverse_cut">Icon representing Reverse Cut</string>
     <string name="ic_desc_proportional_cut">Icon representing Proportional Cut</string>
-    
+
     <string name="hint_length">Length</string>
     <string name="hint_width">Width</string>
     <string name="hint_portion_length">Portion Length</string>
     <string name="hint_portion_width">Portion Width</string>
     <string name="hint_portions">Portions: </string>
     <string name="hint_percentage">Percentage: </string>
-
+    <string name="bt_calculate">Calculate</string>
 
 
     <string name="lorem_ipsum">

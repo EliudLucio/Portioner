@@ -12,13 +12,6 @@ import androidx.appcompat.widget.Toolbar
 
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        const val EXTRA_CUT_TYPE = "cut-type"
-        const val PRECISE_CUT = 1
-        const val DEFINED_CUT = 2
-        const val REVERSE_CUT = 3
-        const val PROPORTIONAL_CUT = 4
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,24 +26,23 @@ class MainActivity : AppCompatActivity() {
 
         // Asignar click listeners a cada botón
         findViewById<LinearLayout>(R.id.btn_precise).setOnClickListener {
-            startInputActivity(PRECISE_CUT)
+            startInputActivity("PRECISE_CUT")
         }
         findViewById<LinearLayout>(R.id.btn_defined).setOnClickListener {
-            startInputActivity(DEFINED_CUT)
+            startInputActivity("DEFINED_CUT")
         }
         findViewById<LinearLayout>(R.id.btn_reverse).setOnClickListener {
-            startInputActivity(REVERSE_CUT)
+            startInputActivity("REVERSE_CUT")
         }
         findViewById<LinearLayout>(R.id.btn_proportion).setOnClickListener {
-            startInputActivity(PROPORTIONAL_CUT)
+            startInputActivity("PROPORTIONAL_CUT")
         }
 
     }
 
-    // Función helper para crear y lanzar InputActivity
-    private fun startInputActivity(cutType: Int) {
+    private fun startInputActivity(cutType: String) {
         val intent = Intent(this, InputActivity::class.java).apply {
-            putExtra(EXTRA_CUT_TYPE, cutType)
+            putExtra("CUT_TYPE", cutType)
         }
         startActivity(intent)
     }
