@@ -32,6 +32,7 @@
     <string name="hint_percentage">Percentage: </string>
     <string name="bt_calculate">Calculate</string>
 
+    <string name="toast_fill_required_fields">Please fill all required fills</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

@@ -52,7 +52,7 @@ class InputActivity : AppCompatActivity() {
         btnCal.setOnClickListener {
             if (!isInputValid()) {
                 // TODO Accesibilidad para otros idiomas
-                Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_fill_required_fields), Toast.LENGTH_SHORT).show()
             } else { startResultsActivity() }
         }
 
