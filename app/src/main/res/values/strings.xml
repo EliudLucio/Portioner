@@ -6,6 +6,8 @@
 
     <string name="main_indication">Select a cutting method</string>
     <string name="cut_indication">Enter the necessary data</string>
+    <string name="results_indication">Results</string>
+
 
     <string name="precise_cut">Precise Cut</string>
     <string name="defined_cut">Defined Cut</string>
