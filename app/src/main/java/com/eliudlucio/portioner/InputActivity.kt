@@ -14,8 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 class InputActivity : AppCompatActivity() {
 
     var cutType: String? = null
-
-    // Declaración de variables a nivel de clase
     private lateinit var valueLength: EditText
     private lateinit var valueWidth: EditText
     private lateinit var valuePortionLength: EditText
@@ -47,14 +45,7 @@ class InputActivity : AppCompatActivity() {
             "PROPORTIONAL_CUT" -> setVisible(valueLength, valueWidth, layPercentage)
         }
 
-        // Manejo del boton calcular
-        val btnCal = findViewById<Button>(R.id.btn_cal)
-        btnCal.setOnClickListener {
-            if (!isInputValid()) {
-                // TODO Accesibilidad para otros idiomas
-                Toast.makeText(this, getString(R.string.toast_fill_required_fields), Toast.LENGTH_SHORT).show()
-            } else { startResultsActivity() }
-        }
+
 
         // Manejo del Portion Seekbar
         val tvValuePortion = findViewById<TextView>(R.id.tv_portions_number)
@@ -83,7 +74,20 @@ class InputActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
+
+        // Manejo del boton calcular
+        val btnCal = findViewById<Button>(R.id.btn_cal)
+
+        btnCal.setOnClickListener {
+            if (!isInputValid()) {
+                Toast.makeText(this, getString(R.string.toast_fill_required_fields), Toast.LENGTH_SHORT).show()
+            } else { startResultsActivity() }
+        }
     }
+
+
+
+
 
     private fun setVisible(vararg views: View) {
         views.forEach { it.visibility = View.VISIBLE }
@@ -103,7 +107,8 @@ class InputActivity : AppCompatActivity() {
         }
     }
 
-    fun startResultsActivity() {
+    // Función para envío de información a la pantalla de resultados
+    private fun startResultsActivity() {
 
         val intent = Intent(this, ResultsActivity::class.java).apply {
             putExtra("CUT_TYPE", cutType)
