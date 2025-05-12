@@ -49,11 +49,16 @@
             android:elevation="8dp"
             style="@style/CutButton">
 
-            <ImageView
+            <View
+                style="@style/DecorButton"
+                android:background="@color/red">
+            </View>
+
+            <!--<ImageView
                 android:id="@+id/ic_precise"
                 android:contentDescription="@string/ic_desc_precise_cut"
                 android:src="@drawable/ic_launcher_background"
-                style="@style/imgCutButton"/>
+                style="@style/imgCutButton"/>-->
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -85,11 +90,16 @@
             android:id="@+id/btn_defined"
             style="@style/CutButton">
 
-            <ImageView
+            <View
+                style="@style/DecorButton"
+                android:background="@color/orange">
+            </View>
+
+            <!--<ImageView
                 android:id="@+id/ic_defined"
                 android:contentDescription="@string/ic_desc_defined_cut"
                 android:src="@drawable/ic_launcher_background"
-                style="@style/imgCutButton"/>
+                style="@style/imgCutButton"/>-->
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -121,11 +131,16 @@
             android:id="@+id/btn_reverse"
             style="@style/CutButton">
 
-            <ImageView
+            <View
+                style="@style/DecorButton"
+                android:background="@color/yellow">
+            </View>
+
+            <!--<ImageView
                 android:id="@+id/ic_reverse"
                 android:contentDescription="@string/ic_desc_reverse_cut"
                 android:src="@drawable/ic_launcher_background"
-                style="@style/imgCutButton"/>
+                style="@style/imgCutButton"/>-->
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -157,11 +172,16 @@
             android:id="@+id/btn_proportion"
             style="@style/CutButton">
 
-            <ImageView
+            <View
+                style="@style/DecorButton"
+                android:background="@color/dark_blue">
+            </View>
+
+            <!--<ImageView
                 android:id="@+id/ic_proportion"
                 android:contentDescription="@string/ic_desc_proportional_cut"
                 android:src="@drawable/ic_launcher_background"
-                style="@style/imgCutButton"/>
+                style="@style/imgCutButton"/>-->
 
             <LinearLayout
                 android:layout_width="0dp"
