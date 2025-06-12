@@ -38,6 +38,7 @@
     <string name="input_obj_dimensions">Object dimensions</string>
     <string name="input_piece_quantity">Pieces</string>
     <string name="input_piece_dimensions">Piece dimensions</string>
+    <string name="area_object">Total area</string>
 
     <string name="res_width">Width of each piece</string>
     <string name="res_height">Height of each piece</string>

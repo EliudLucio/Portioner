@@ -106,12 +106,6 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/tv_cut_instruction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </TextView>
         </LinearLayout>
     </ScrollView>
 

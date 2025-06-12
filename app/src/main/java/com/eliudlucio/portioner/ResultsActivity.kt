@@ -8,17 +8,17 @@ import kotlin.math.roundToInt
 
 class ResultsActivity : AppCompatActivity() {
 
-    lateinit var layInputs: LinearLayout
-    lateinit var layResults: LinearLayout
-    lateinit var tvCutInstruction: TextView
+    private lateinit var layInputs: LinearLayout
+    private lateinit var layResults: LinearLayout
+    private lateinit var tvCutInstruction: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
+
         layInputs = findViewById(R.id.lay_inputs)
         layResults = findViewById(R.id.lay_results)
-        tvCutInstruction = findViewById(R.id.tv_cut_instruction)
 
         // Recibir datos
         val cutType = intent.getStringExtra("CUT_TYPE")
@@ -43,17 +43,23 @@ class ResultsActivity : AppCompatActivity() {
         layout.addView(textView)
     }
 
+    //TODO: Unidades de medida
+
     private fun showPreciseCut(length: Double?, width: Double?, portions: Int) {
         if (length == null || width == null || portions <= 0) return
 
-        val portionArea = (length * width) / portions
-        val portionWidth = width / portions
-        val portionHeight = length / portions
+        val objectArea = length * width
+        val portionArea = objectArea / portions
+        val portionWidth = width / (portions / 2)
+        val portionHeight = length / (portions / 2)
 
-        addLine(layInputs, getString(R.string.input_cut_type), "Corte Exacto")
+        // Inputs
+        addLine(layInputs, getString(R.string.input_cut_type), getString(R.string.precise_cut))
+        addLine(layInputs, getString(R.string.area_object), "$objectArea cm²")
         addLine(layInputs, getString(R.string.input_obj_dimensions), "${length}x${width} cm")
         addLine(layInputs, getString(R.string.input_piece_quantity), portions.toString())
 
+        // Outputs
         addLine(layResults, getString(R.string.res_width), "$portionWidth cm")
         addLine(layResults, getString(R.string.res_height), "$portionHeight cm")
         addLine(layResults, getString(R.string.res_area), "$portionArea cm²")
@@ -73,10 +79,12 @@ class ResultsActivity : AppCompatActivity() {
         val usedPercent = (totalUsedArea / totalArea) * 100
         val wastePercent = 100 - usedPercent
 
-        addLine(layInputs, getString(R.string.input_cut_type), "Corte a Medida")
+        // Inputs
+        addLine(layInputs, getString(R.string.input_cut_type), getString(R.string.defined_cut))
         addLine(layInputs, getString(R.string.input_obj_dimensions), "${length}x${width} cm")
         addLine(layInputs, getString(R.string.input_piece_dimensions), "${portionLength}x${portionWidth} cm")
 
+        // Outputs
         addLine(layResults, getString(R.string.input_piece_quantity), totalPortions.toString())
         addLine(layResults, getString(R.string.res_used_area), "$totalUsedArea cm² (${usedPercent.roundToInt()}%)")
         addLine(layResults, getString(R.string.res_mat_waste), "$wasteArea cm² (${wastePercent.roundToInt()}%)")
@@ -85,14 +93,20 @@ class ResultsActivity : AppCompatActivity() {
     private fun showReverseCut(portionLength: Double?, portionWidth: Double?, portions: Int) {
         if (portionLength == null || portionWidth == null || portions <= 0) return
 
-        val totalArea = portionLength * portionWidth * portions
+        val totalAreaRequiered = portionLength * portionWidth * portions
+        val length = portionLength * (portions / 2)
+        val width = portionWidth * (portions / 2)
 
-        addLine(layInputs, getString(R.string.input_cut_type), "Corte Inverso")
+        // Inputs
+        addLine(layInputs, getString(R.string.input_cut_type), getString(R.string.reverse_cut))
         addLine(layInputs, getString(R.string.input_piece_dimensions), "${portionLength}x${portionWidth} cm")
         addLine(layInputs, getString(R.string.input_piece_quantity), portions.toString())
 
-        addLine(layResults, getString(R.string.res_requiered_area), "$totalArea cm²")
-        addLine(layResults, getString(R.string.res_min_obj_dimen), "Al menos ${portionLength}x${portionWidth * portions} cm o equivalente")
+        // Outputs
+        addLine(layResults, getString(R.string.res_requiered_area), "$totalAreaRequiered cm²")
+        addLine(layResults, getString(R.string.input_obj_dimensions), "${length}x${width} cm")
+
+        //addLine(layResults, getString(R.string.res_min_obj_dimen), "Al menos ${portionLength}x${portionWidth * portions} cm o equivalente")
     }
 
     private fun showProportionalCut(length: Double?, width: Double?, percentage: Int) {
@@ -111,13 +125,13 @@ class ResultsActivity : AppCompatActivity() {
         val remainingSize = if (cutOrientation == "horizontal") "${length - cutDistance}x$width cm"
         else "$length x ${width - cutDistance} cm"
 
-        addLine(layInputs, getString(R.string.input_cut_type), "Corte por Porcentaje")
+        // Inputs
+        addLine(layInputs, getString(R.string.input_cut_type), getString(R.string.proportional_cut))
         addLine(layInputs, getString(R.string.input_obj_dimensions), "${length}x${width} cm")
         addLine(layInputs, getString(R.string.res_percentage), "$percentage%")
 
+        // Outputs
         addLine(layResults, getString(R.string.res_piece1), "$portionSize (${portionArea.roundToInt()} cm²)")
         addLine(layResults, getString(R.string.res_piece2), "$remainingSize (${remainingArea.roundToInt()} cm²)")
-
-        tvCutInstruction.text = getString(R.string.res_instruction, cutDistance.roundToInt(), cutOrientation)
     }
 }
