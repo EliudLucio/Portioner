@@ -1,71 +1,63 @@
 <resources>
-    <string name="app_name">Portioner</string>
+    <string name="app_name" translatable="false">Piece Cutter</string>
 
-    <string name="menu_config">Configuration</string>
     <string name="menu_help">Help</string>
+    <string name="menu_config">Configuration</string>
 
     <string name="main_indication">Select a cutting method</string>
     <string name="cut_indication">Enter the necessary data</string>
+    <string name="data_entered_title">Data entered</string>
+    <string name="results_title">Results</string>
 
     <string name="precise_cut">Precise Cut</string>
     <string name="defined_cut">Defined Cut</string>
     <string name="reverse_cut">Reverse Cut</string>
     <string name="proportional_cut">Proportional Cut</string>
 
-    <string name="desc_precise_cut">Cut an object into equal-sized portions without material waste.</string>
-    <string name="desc_defined_cut">Cut an object into user-defined portion sizes, allowing for material waste.</string>
-    <string name="desc_reverse_cut">Determine the required material size to obtain a specific number of portions.</string>
-    <string name="desc_proportional_cut">Divide an object into uneven sections based on a percentage ratio.</string>
+    <string name="desc_precise_cut">Divide the object into equal pieces with no leftover material</string>
+    <string name="desc_defined_cut">Cut the object into pieces of your chosen size, even if some material is left unused</string>
+    <string name="desc_reverse_cut">Find out how big the object needs to be to get the number of pieces you want</string>
+    <string name="desc_proportional_cut">Split the object into two parts based on a percentage</string>
 
     <string name="ic_desc_precise_cut">Icon representing Precise Cut</string>
     <string name="ic_desc_defined_cut">Icon representing Defined Cut</string>
     <string name="ic_desc_reverse_cut">Icon representing Reverse Cut</string>
     <string name="ic_desc_proportional_cut">Icon representing Proportional Cut</string>
-    
-    <string name="hint_length">Length</string>
-    <string name="hint_width">Width</string>
-    <string name="hint_portion_length">Portion Length</string>
-    <string name="hint_portion_width">Portion Width</string>
-    <string name="hint_portions">Portions: </string>
+
+    <string name="hint_length">Length of the object</string>
+    <string name="hint_width">Width of the object</string>
+    <string name="hint_piece_length">Length of the Piece</string>
+    <string name="hint_piece_width">Width of the Piece</string>
+    <string name="hint_pieces">Pieces: </string>
     <string name="hint_percentage">Percentage: </string>
+    <string name="bt_calculate">Calculate</string>
 
+    <string name="toast_fill_required_fields">Please fill all required fields</string>
 
+    <string name="input_dimen_obj">Object Dimensions:</string>
+    <string name="input_dimen_piece">Piece Dimensions:</string>
 
-    <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
-        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
-        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
-        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
-        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
-        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
-        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
-        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
-        bibendum, vel congue leo egestas.\n\n
-        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
-        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
-        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
-        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
-        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
-        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
-        est.\n\n
-        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
-        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
-        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
-        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
-        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
-        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
-        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
-        convallis.\n\n
-        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
-        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
-        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
-    </string>
+    <string name="input_indication_length">Length of the object</string>
+    <string name="input_indication_width">Width of the object</string>
+    <string name="input_indication_pc_length">Desired length of the piece</string>
+    <string name="input_indication_pc_width">Desired width of the piece</string>
 
+    <string name="input_cut_type">Cut type</string>
+    <string name="input_obj_dimensions">Object dimensions</string>
+    <string name="input_piece_quantity">Pieces</string>
+    <string name="input_piece_dimensions">Piece dimensions</string>
+    <string name="area_object">Total area</string>
+
+    <string name="res_width">Width of each piece</string>
+    <string name="res_height">Height of each piece</string>
+    <string name="res_area">Area of each piece</string>
+    <string name="res_used_area">Used area</string>
+    <string name="res_mat_waste">Material waste</string>
+    <string name="res_requiered_area">Total required area</string>
+    <string name="res_min_obj_dimen">Minimum object dimensions</string>
+    <string name="res_percentage">Cut percentage</string>
+    <string name="res_piece1">Piece 1</string>
+    <string name="res_piece2">Piece 2</string>
+    <string name="res_instruction">Make a cut at a distance of %1$d cm from the %2$s edge of the object.</string>
+    <string name="data_resume">portions of</string>
 </resources>
