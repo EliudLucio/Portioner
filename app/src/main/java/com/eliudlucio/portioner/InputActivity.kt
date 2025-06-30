@@ -34,15 +34,17 @@ class InputActivity : AppCompatActivity() {
         valuePortionWidth = findViewById(R.id.et_portion_width)
         val layPortions = findViewById<LinearLayout>(R.id.lay_portions)
         val layPercentage = findViewById<LinearLayout>(R.id.lay_percentage)
+        val tvDimenObj = findViewById<TextView>(R.id.tv_dimen_obj)
+        val tvDimenPiece = findViewById<TextView>(R.id.tv_dimen_piece)
 
         valuePortionSeekBar = findViewById(R.id.portionSeekBar)
         valuePercentageSeekBar = findViewById(R.id.percentageSeekBar)
 
         when (cutType) {
-            "PRECISE_CUT" -> setVisible(valueLength, valueWidth, layPortions)
-            "DEFINED_CUT" -> setVisible(valueLength, valueWidth, valuePortionLength, valuePortionWidth)
-            "REVERSE_CUT" -> setVisible(valuePortionLength, valuePortionWidth, layPortions)
-            "PROPORTIONAL_CUT" -> setVisible(valueLength, valueWidth, layPercentage)
+            "PRECISE_CUT" -> setVisible(valueLength, valueWidth, layPortions, tvDimenObj)
+            "DEFINED_CUT" -> setVisible(valueLength, valueWidth, valuePortionLength, valuePortionWidth, tvDimenObj, tvDimenPiece)
+            "REVERSE_CUT" -> setVisible(valuePortionLength, valuePortionWidth, layPortions, tvDimenPiece)
+            "PROPORTIONAL_CUT" -> setVisible(valueLength, valueWidth, layPercentage, tvDimenObj)
         }
 
 

@@ -1,6 +1,7 @@
 package com.eliudlucio.portioner
 
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -37,16 +38,30 @@ class ResultsActivity : AppCompatActivity() {
     }
 
     private fun addDataLine(layout: LinearLayout, label: String, value: String) {
-        val textView = TextView(this)
-        textView.text = "$label: $value"
-        layout.addView(textView)
+        val inflater = layoutInflater
+        val view = inflater.inflate(R.layout.item_data_line, layout, false)
+
+        val tvLabel = view.findViewById<TextView>(R.id.tv_label)
+        val tvValue = view.findViewById<TextView>(R.id.tv_value)
+
+        tvLabel.text = label
+        tvValue.text = value
+
+        layout.addView(view)
     }
+
 
     private fun addLine(layout: LinearLayout, value: String) {
         val textView = TextView(this)
         textView.text = value
-        layout.addView(textView)
+        textView.textSize = 17f
+        textView.setTextColor(getColor(R.color.black))
+        textView.setPadding(0, 8, 0, 8)
+        textView.gravity = Gravity.CENTER
+
+            layout.addView(textView)
     }
+
 
     private fun roundData(value : Double): Double {
         val roundedData = Math.round(value * 100.0) / 100.0
@@ -89,7 +104,8 @@ class ResultsActivity : AppCompatActivity() {
         addDataLine(layInputs, getString(R.string.input_piece_quantity), portions.toString())
 
         // Outputs
-        addLine(layResults, "$portions ${getString(R.string.data_resume_precise)} ${roundData(bestWidth)} x ${roundData(bestHeight)}")
+        addLine(layResults, "$portions ${getString(R.string.data_resume)} ${roundData(bestWidth)} x ${roundData(bestHeight)}")
+
         addDataLine(layResults, getString(R.string.res_width), "${roundData(bestWidth)} cm")
         addDataLine(layResults, getString(R.string.res_height), "${roundData(bestHeight)} cm")
         addDataLine(layResults, getString(R.string.res_area), "${roundData(portionArea)} cm²")
@@ -116,7 +132,7 @@ class ResultsActivity : AppCompatActivity() {
         addDataLine(layInputs, getString(R.string.input_piece_dimensions), "${portionLength}x${portionWidth} cm")
 
         // Outputs
-        //TODO: Resumen
+        addLine(layResults, "$totalPortions ${getString(R.string.data_resume)} ${roundData(portionLength)} x ${roundData(portionWidth)}")
         addDataLine(layResults, getString(R.string.input_piece_quantity), totalPortions.toString())
         addDataLine(layResults, getString(R.string.res_used_area), "${roundData(totalUsedArea)} cm² (${usedPercent.roundToInt()}%)")
         addDataLine(layResults, getString(R.string.res_mat_waste), "${roundData(wasteArea)} cm² (${wastePercent.roundToInt()}%)")
@@ -151,7 +167,6 @@ class ResultsActivity : AppCompatActivity() {
         addDataLine(layInputs, getString(R.string.input_piece_quantity), portions.toString())
 
         // Outputs
-        //TODO: Resumen
         addDataLine(layResults, getString(R.string.res_requiered_area), "${roundData(portionLength * portionWidth * portions)} cm²")
         addDataLine(layResults, getString(R.string.input_obj_dimensions), "${roundData(bestLength)}x${roundData(bestWidth)} cm")
 

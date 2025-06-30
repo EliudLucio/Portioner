@@ -14,10 +14,10 @@
     <string name="reverse_cut">Reverse Cut</string>
     <string name="proportional_cut">Proportional Cut</string>
 
-    <string name="desc_precise_cut">Cut an object into equal-sized pieces without material waste.</string>
-    <string name="desc_defined_cut">Cut an object into user-defined piece sizes, allowing for material waste.</string>
-    <string name="desc_reverse_cut">Determine the required material size to obtain a specific number of pieces.</string>
-    <string name="desc_proportional_cut">Divide an object into uneven sections based on a percentage ratio.</string>
+    <string name="desc_precise_cut">Divide the object into equal pieces with no leftover material</string>
+    <string name="desc_defined_cut">Cut the object into pieces of your chosen size, even if some material is left unused</string>
+    <string name="desc_reverse_cut">Find out how big the object needs to be to get the number of pieces you want</string>
+    <string name="desc_proportional_cut">Split the object into two parts based on a percentage</string>
 
     <string name="ic_desc_precise_cut">Icon representing Precise Cut</string>
     <string name="ic_desc_defined_cut">Icon representing Defined Cut</string>
@@ -27,12 +27,15 @@
     <string name="hint_length">Length of the object</string>
     <string name="hint_width">Width of the object</string>
     <string name="hint_piece_length">Length of the Piece</string>
-    <string name="hint_piece_width">Piece Width</string>
+    <string name="hint_piece_width">Width of the Piece</string>
     <string name="hint_pieces">Pieces: </string>
     <string name="hint_percentage">Percentage: </string>
     <string name="bt_calculate">Calculate</string>
 
     <string name="toast_fill_required_fields">Please fill all required fields</string>
+
+    <string name="input_dimen_obj">Object Dimensions:</string>
+    <string name="input_dimen_piece">Piece Dimensions:</string>
 
     <string name="input_indication_length">Length of the object</string>
     <string name="input_indication_width">Width of the object</string>
@@ -56,5 +59,5 @@
     <string name="res_piece1">Piece 1</string>
     <string name="res_piece2">Piece 2</string>
     <string name="res_instruction">Make a cut at a distance of %1$d cm from the %2$s edge of the object.</string>
-    <string name="data_resume_precise">portions of</string>
+    <string name="data_resume">portions of</string>
 </resources>

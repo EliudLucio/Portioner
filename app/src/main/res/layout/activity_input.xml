@@ -43,6 +43,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <TextView
+            android:id="@+id/tv_dimen_obj"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_dimen_obj"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp" />
+
         <EditText
             android:id="@+id/et_length"
             android:visibility="gone"
@@ -68,6 +79,17 @@
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
             android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/tv_dimen_piece"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_dimen_piece"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/et_portion_length"
