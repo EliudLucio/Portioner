@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Piece Cutter</string>
+    <string name="app_name" translatable="false">Piece Cutter</string>
 
-    <string name="menu_config">Configuration</string>
     <string name="menu_help">Help</string>
+    <string name="menu_config">Configuration</string>
 
     <string name="main_indication">Select a cutting method</string>
     <string name="cut_indication">Enter the necessary data</string>
@@ -24,15 +24,20 @@
     <string name="ic_desc_reverse_cut">Icon representing Reverse Cut</string>
     <string name="ic_desc_proportional_cut">Icon representing Proportional Cut</string>
 
-    <string name="hint_length">Length</string>
-    <string name="hint_width">Width</string>
-    <string name="hint_piece_length">Piece Length</string>
+    <string name="hint_length">Length of the object</string>
+    <string name="hint_width">Width of the object</string>
+    <string name="hint_piece_length">Length of the Piece</string>
     <string name="hint_piece_width">Piece Width</string>
     <string name="hint_pieces">Pieces: </string>
     <string name="hint_percentage">Percentage: </string>
     <string name="bt_calculate">Calculate</string>
 
     <string name="toast_fill_required_fields">Please fill all required fields</string>
+
+    <string name="input_indication_length">Length of the object</string>
+    <string name="input_indication_width">Width of the object</string>
+    <string name="input_indication_pc_length">Desired length of the piece</string>
+    <string name="input_indication_pc_width">Desired width of the piece</string>
 
     <string name="input_cut_type">Cut type</string>
     <string name="input_obj_dimensions">Object dimensions</string>
@@ -51,4 +56,5 @@
     <string name="res_piece1">Piece 1</string>
     <string name="res_piece2">Piece 2</string>
     <string name="res_instruction">Make a cut at a distance of %1$d cm from the %2$s edge of the object.</string>
+    <string name="data_resume_precise">portions of</string>
 </resources>

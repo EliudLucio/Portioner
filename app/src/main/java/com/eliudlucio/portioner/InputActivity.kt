@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class InputActivity : AppCompatActivity() {
 
-    var cutType: String? = null
+    private var cutType: String? = null
     private lateinit var valueLength: EditText
     private lateinit var valueWidth: EditText
     private lateinit var valuePortionLength: EditText
