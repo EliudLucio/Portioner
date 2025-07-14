@@ -1,6 +1,7 @@
 package com.eliudlucio.portioner
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         // Establecer la Toolbar como el App Bar
         val toolbar: Toolbar = findViewById(R.id.my_toolbar)
         setSupportActionBar(toolbar)
+        
+
 
         // Asignar click listeners a cada botón
         findViewById<LinearLayout>(R.id.btn_precise).setOnClickListener {
@@ -37,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.btn_proportion).setOnClickListener {
             startInputActivity("PROPORTIONAL_CUT")
         }
+
+
 
     }
 

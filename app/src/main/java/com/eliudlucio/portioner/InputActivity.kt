@@ -10,6 +10,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 class InputActivity : AppCompatActivity() {
 
@@ -45,6 +46,16 @@ class InputActivity : AppCompatActivity() {
             "DEFINED_CUT" -> setVisible(valueLength, valueWidth, valuePortionLength, valuePortionWidth, tvDimenObj, tvDimenPiece)
             "REVERSE_CUT" -> setVisible(valuePortionLength, valuePortionWidth, layPortions, tvDimenPiece)
             "PROPORTIONAL_CUT" -> setVisible(valueLength, valueWidth, layPercentage, tvDimenObj)
+        }
+
+        // Establecer la Toolbar como el App Bar
+        val toolbar: Toolbar = findViewById(R.id.my_toolbar)
+        setSupportActionBar(toolbar)
+
+        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24)
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
 
 
