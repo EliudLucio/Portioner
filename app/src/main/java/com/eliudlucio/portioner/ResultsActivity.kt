@@ -1,16 +1,20 @@
 package com.eliudlucio.portioner
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import kotlin.math.roundToInt
+
 
 class ResultsActivity : AppCompatActivity() {
 
     private lateinit var layInputs: LinearLayout
     private lateinit var layResults: LinearLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,26 @@ class ResultsActivity : AppCompatActivity() {
             "REVERSE_CUT" -> showReverseCut(portionLength, portionWidth, portions)
             "PROPORTIONAL_CUT" -> showProportionalCut(length, width, percentage)
         }
+
+        // Establecer la Toolbar como el App Bar
+        val toolbar: Toolbar = findViewById(R.id.my_toolbar)
+        setSupportActionBar(toolbar)
+
+        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24)
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        val canvas = findViewById<CustomView>(R.id.canvas)
+        canvas.rectColor = Color.BLUE
+        canvas.rectLeft = 150f
+        canvas.rectTop = 200f
+        canvas.rectRight = 600f
+        canvas.rectBottom = 400f
+        canvas.invalidate()
+
+
     }
 
     private fun addDataLine(layout: LinearLayout, label: String, value: String) {
@@ -201,3 +225,5 @@ class ResultsActivity : AppCompatActivity() {
         addDataLine(layResults, getString(R.string.res_piece2), "$remainingSize (${remainingArea.roundToInt()} cm²)")
     }
 }
+
+
