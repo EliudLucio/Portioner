@@ -50,4 +50,29 @@
     <string name="res_piece2">Pieza 2</string>
     <string name="res_instruction">Haz un corte a una distancia de %1$d cm desde el borde %2$s del objeto.</string>
     <string name="data_resume">porciones de</string>
+    <string name="units_measurement">Unidades de medida</string>
+    <string name="app_language">Lenguaje</string>
+    <string name="general_options">Opciones generales</string>
+
+    <string-array name="unit_names">
+        <item>Centimetros</item>
+        <item>Milimetros</item>
+        <item>Pulgadas</item>
+    </string-array>
+
+    <string-array name="unit_values">
+        <item>cm</item>
+        <item>mm</item>
+        <item>in</item>
+    </string-array>
+
+    <string-array name="language_names">
+        <item>🇪🇸 Español</item>
+        <item>🇺🇸 Ingles</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
 </resources>

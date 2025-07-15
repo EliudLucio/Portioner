@@ -60,4 +60,30 @@
     <string name="res_piece2">Piece 2</string>
     <string name="res_instruction">Make a cut at a distance of %1$d cm from the %2$s edge of the object.</string>
     <string name="data_resume">portions of</string>
+
+    <string name="units_measurement">Units of measurement</string>
+    <string name="app_language">Language</string>
+    <string name="general_options">General options</string>
+
+    <string-array name="unit_names">
+        <item>Centimeters</item>
+        <item>Millimeters</item>
+        <item>Inches</item>
+    </string-array>
+
+    <string-array name="unit_values">
+        <item>cm</item>
+        <item>mm</item>
+        <item>in</item>
+    </string-array>
+
+    <string-array name="language_names">
+        <item>🇪🇸 Spanish</item>
+        <item>🇺🇸 English</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
 </resources>

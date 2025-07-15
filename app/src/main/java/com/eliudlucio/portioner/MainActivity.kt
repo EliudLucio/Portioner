@@ -1,7 +1,8 @@
 package com.eliudlucio.portioner
 
+import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,9 +11,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import androidx.preference.PreferenceManager
+import com.eliudlucio.portioner.LocaleHelper.setLocale
 
 
 class MainActivity : AppCompatActivity() {
+
+    override fun attachBaseContext(newBase: Context?) {
+        val base = requireNotNull(newBase)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(base)
+        val lang = prefs.getString("preferred_language", "es") ?: "es"
+        val localized = setLocale(base, lang)
+
+        super.attachBaseContext(localized)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         // Establecer la Toolbar como el App Bar
         val toolbar: Toolbar = findViewById(R.id.my_toolbar)
         setSupportActionBar(toolbar)
-        
+        toolbar.overflowIcon?.setTint(Color.WHITE)
 
 
         // Asignar click listeners a cada botón
@@ -60,8 +72,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_config -> {
-                //TODO
-                Toast.makeText(this, "Abrir Configuración", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.menu_help -> {
@@ -72,4 +84,5 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 }
