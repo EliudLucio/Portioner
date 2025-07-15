@@ -1,5 +1,6 @@
 package com.eliudlucio.portioner
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
@@ -7,19 +8,40 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.preference.PreferenceManager
+import com.eliudlucio.portioner.LocaleHelper.setLocale
 import kotlin.math.roundToInt
+
 
 
 class ResultsActivity : AppCompatActivity() {
 
     private lateinit var layInputs: LinearLayout
     private lateinit var layResults: LinearLayout
+    private lateinit var suffix: String
 
+    override fun attachBaseContext(newBase: Context?) {
+        val base = requireNotNull(newBase)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(base)
+        val lang = prefs.getString("preferred_language", "es") ?: "es"
+        val localized = setLocale(base, lang)
+
+        super.attachBaseContext(localized)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val unitPref = prefs.getString("preferred_unit", "cm") ?: "cm"
+
+        suffix = when (unitPref) {
+            "cm" -> "cm"
+            "mm" -> "mm"
+            "in" -> "in"
+            else -> ""
+        }
 
         layInputs = findViewById(R.id.lay_inputs)
         layResults = findViewById(R.id.lay_results)
@@ -92,8 +114,6 @@ class ResultsActivity : AppCompatActivity() {
         return roundedData;
     }
 
-    //TODO: Unidades de medida
-
     private fun showPreciseCut(length: Double?, width: Double?, portions: Int) {
         if (length == null || width == null || portions <= 0) return
 
@@ -123,16 +143,16 @@ class ResultsActivity : AppCompatActivity() {
 
         // Inputs
         addDataLine(layInputs, getString(R.string.input_cut_type), getString(R.string.precise_cut))
-        addDataLine(layInputs, getString(R.string.area_object), "$objectArea cm²")
-        addDataLine(layInputs, getString(R.string.input_obj_dimensions), "${length}x${width} cm")
+        addDataLine(layInputs, getString(R.string.area_object), "$objectArea $suffix²")
+        addDataLine(layInputs, getString(R.string.input_obj_dimensions), "${length}x${width} $suffix")
         addDataLine(layInputs, getString(R.string.input_piece_quantity), portions.toString())
 
         // Outputs
-        addLine(layResults, "$portions ${getString(R.string.data_resume)} ${roundData(bestWidth)} x ${roundData(bestHeight)}")
+        addLine(layResults, "$portions ${getString(R.string.data_resume)} ${roundData(bestWidth)} x ${roundData(bestHeight)} $suffix")
 
-        addDataLine(layResults, getString(R.string.res_width), "${roundData(bestWidth)} cm")
-        addDataLine(layResults, getString(R.string.res_height), "${roundData(bestHeight)} cm")
-        addDataLine(layResults, getString(R.string.res_area), "${roundData(portionArea)} cm²")
+        addDataLine(layResults, getString(R.string.res_width), "${roundData(bestWidth)} $suffix")
+        addDataLine(layResults, getString(R.string.res_height), "${roundData(bestHeight)} $suffix")
+        addDataLine(layResults, getString(R.string.res_area), "${roundData(portionArea)} $suffix²")
 
     }
 
@@ -152,14 +172,14 @@ class ResultsActivity : AppCompatActivity() {
 
         // Inputs
         addDataLine(layInputs, getString(R.string.input_cut_type), getString(R.string.defined_cut))
-        addDataLine(layInputs, getString(R.string.input_obj_dimensions), "${length}x${width} cm")
-        addDataLine(layInputs, getString(R.string.input_piece_dimensions), "${portionLength}x${portionWidth} cm")
+        addDataLine(layInputs, getString(R.string.input_obj_dimensions), "${length}x${width} $suffix")
+        addDataLine(layInputs, getString(R.string.input_piece_dimensions), "${portionLength}x${portionWidth} $suffix")
 
         // Outputs
-        addLine(layResults, "$totalPortions ${getString(R.string.data_resume)} ${roundData(portionLength)} x ${roundData(portionWidth)}")
+        addLine(layResults, "$totalPortions ${getString(R.string.data_resume)} ${roundData(portionLength)} x ${roundData(portionWidth)} $suffix")
         addDataLine(layResults, getString(R.string.input_piece_quantity), totalPortions.toString())
-        addDataLine(layResults, getString(R.string.res_used_area), "${roundData(totalUsedArea)} cm² (${usedPercent.roundToInt()}%)")
-        addDataLine(layResults, getString(R.string.res_mat_waste), "${roundData(wasteArea)} cm² (${wastePercent.roundToInt()}%)")
+        addDataLine(layResults, getString(R.string.res_used_area), "${roundData(totalUsedArea)} $suffix² (${usedPercent.roundToInt()}%)")
+        addDataLine(layResults, getString(R.string.res_mat_waste), "${roundData(wasteArea)} $suffix² (${wastePercent.roundToInt()}%)")
     }
 
     private fun showReverseCut(portionLength: Double?, portionWidth: Double?, portions: Int) {
@@ -187,12 +207,12 @@ class ResultsActivity : AppCompatActivity() {
 
         // Inputs
         addDataLine(layInputs, getString(R.string.input_cut_type), getString(R.string.reverse_cut))
-        addDataLine(layInputs, getString(R.string.input_piece_dimensions), "${portionLength}x${portionWidth} cm")
+        addDataLine(layInputs, getString(R.string.input_piece_dimensions), "$portionLength x $portionWidth $suffix")
         addDataLine(layInputs, getString(R.string.input_piece_quantity), portions.toString())
 
         // Outputs
-        addDataLine(layResults, getString(R.string.res_requiered_area), "${roundData(portionLength * portionWidth * portions)} cm²")
-        addDataLine(layResults, getString(R.string.input_obj_dimensions), "${roundData(bestLength)}x${roundData(bestWidth)} cm")
+        addDataLine(layResults, getString(R.string.res_requiered_area), "${roundData(portionLength * portionWidth * portions)} $suffix²")
+        addDataLine(layResults, getString(R.string.input_obj_dimensions), "${roundData(bestLength)} x ${roundData(bestWidth)} $suffix")
 
 
         //addLine(layResults, getString(R.string.res_min_obj_dimen), "Al menos ${portionLength}x${portionWidth * portions} cm o equivalente")
@@ -208,21 +228,21 @@ class ResultsActivity : AppCompatActivity() {
         val portionArea = area * (percentage / 100.0)
         val remainingArea = area - portionArea
 
-        val portionSize = if (cutOrientation == "horizontal") "${roundData(cutDistance)}x${roundData(width)} cm"
-        else "${roundData(length)} x ${roundData(cutDistance)} cm"
+        val portionSize = if (cutOrientation == "horizontal") "${roundData(cutDistance)} x ${roundData(width)} $suffix"
+        else "${roundData(length)} x ${roundData(cutDistance)} $suffix"
 
-        val remainingSize = if (cutOrientation == "horizontal") "${roundData(length - cutDistance)}x${roundData(width)} cm"
-        else "$length x ${width - cutDistance} cm"
+        val remainingSize = if (cutOrientation == "horizontal") "${roundData(length - cutDistance)} x ${roundData(width)} $suffix"
+        else "$length x ${width - cutDistance} $suffix"
 
         // Inputs
         addDataLine(layInputs, getString(R.string.input_cut_type), getString(R.string.proportional_cut))
-        addDataLine(layInputs, getString(R.string.input_obj_dimensions), "${length}x${width} cm")
+        addDataLine(layInputs, getString(R.string.input_obj_dimensions), "$length x $width $suffix")
         addDataLine(layInputs, getString(R.string.res_percentage), "$percentage%")
 
         // Outputs
         //TODO: Resumen
-        addDataLine(layResults, getString(R.string.res_piece1), "$portionSize (${portionArea.roundToInt()} cm²)")
-        addDataLine(layResults, getString(R.string.res_piece2), "$remainingSize (${remainingArea.roundToInt()} cm²)")
+        addDataLine(layResults, getString(R.string.res_piece1), "$portionSize (${portionArea.roundToInt()} $suffix²)")
+        addDataLine(layResults, getString(R.string.res_piece2), "$remainingSize (${remainingArea.roundToInt()} $suffix²)")
     }
 }
 
