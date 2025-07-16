@@ -53,6 +53,7 @@
     <string name="units_measurement">Unidades de medida</string>
     <string name="app_language">Lenguaje</string>
     <string name="general_options">Opciones generales</string>
+    <style name="toast_error_defined_cut">Las piezas no pueden ser mas grandes que el objeto</style>
 
     <string-array name="unit_names">
         <item>Centimetros</item>

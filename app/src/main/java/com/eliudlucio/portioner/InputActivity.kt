@@ -120,12 +120,34 @@ class InputActivity : AppCompatActivity() {
     }
 
     private fun isInputValid(): Boolean {
+        val objLength = valueLength.text.toString().toDoubleOrNull()
+        val objWidth = valueWidth.text.toString().toDoubleOrNull()
+        val portionLength = valuePortionLength.text.toString().toDoubleOrNull()
+        val portionWidth = valuePortionWidth.text.toString().toDoubleOrNull()
+
+
         return when (cutType) {
-            "DEFINED_CUT" -> !valueLength.text.isNullOrBlank() &&
-                    !valueWidth.text.isNullOrBlank() &&
-                    !valuePortionLength.text.isNullOrBlank() &&
-                    !valuePortionWidth.text.isNullOrBlank()
-            "PRECISE_CUT", "PROPORTIONAL_CUT" -> !valueLength.text.isNullOrBlank() &&
+            "DEFINED_CUT" -> {
+                if (valueLength.text.isNullOrBlank() ||
+                    valueWidth.text.isNullOrBlank() ||
+                    valuePortionLength.text.isNullOrBlank() ||
+                    valuePortionWidth.text.isNullOrBlank()) {
+                    return false
+                }
+
+                if (objLength == null || objWidth == null ||
+                    portionLength == null || portionWidth == null) {
+
+                    //TODO: Aviso correcto al usuario del error (Acualmente no sale este Toast)
+                    Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+                    return false
+                }
+
+                objLength >= portionLength && objWidth >= portionWidth
+            }
+            "PRECISE_CUT" -> !valueLength.text.isNullOrBlank() &&
+                    !valueWidth.text.isNullOrBlank()
+            "PROPORTIONAL_CUT" -> !valueLength.text.isNullOrBlank() &&
                     !valueWidth.text.isNullOrBlank()
             "REVERSE_CUT" -> !valuePortionLength.text.isNullOrBlank() &&
                     !valuePortionWidth.text.isNullOrBlank()
