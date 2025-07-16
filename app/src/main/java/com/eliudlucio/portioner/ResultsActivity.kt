@@ -73,12 +73,27 @@ class ResultsActivity : AppCompatActivity() {
         }
 
         val canvas = findViewById<CustomView>(R.id.canvas)
-        canvas.rectColor = Color.BLUE
-        canvas.rectLeft = 150f
-        canvas.rectTop = 200f
-        canvas.rectRight = 600f
-        canvas.rectBottom = 400f
+        canvas.objectWidth  = length?.toFloat() ?: 0f
+        canvas.objectHeight = width?.toFloat()  ?: 0f
+
+        val rects = when (cutType) {
+            "PRECISE_CUT"     -> calculatePreciseCutRects(length!!, width!!, portions)
+            "DEFINED_CUT"     -> calculateDefinedCutRects(length!!, width!!, portionLength!!, portionWidth!!)
+            "REVERSE_CUT"     -> calculateReverseCutRects(portionLength!!, portionWidth!!, portions)
+            "PROPORTIONAL_CUT"-> calculateProportionalCutRects(length!!, width!!, percentage)
+            else              -> emptyList()
+        }
+
+        canvas.rects = rects
+        val maxRight  = rects.maxOfOrNull { it.right  } ?: 0f
+        val maxBottom = rects.maxOfOrNull { it.bottom } ?: 0f
+
+        canvas.objectWidth  = maxRight
+        canvas.objectHeight = maxBottom
+        canvas.rects        = rects
         canvas.invalidate()
+        canvas.invalidate()
+
 
 
     }
@@ -104,8 +119,7 @@ class ResultsActivity : AppCompatActivity() {
         textView.setTextColor(getColor(R.color.black))
         textView.setPadding(0, 8, 0, 8)
         textView.gravity = Gravity.CENTER
-
-            layout.addView(textView)
+        layout.addView(textView)
     }
 
 
@@ -232,7 +246,7 @@ class ResultsActivity : AppCompatActivity() {
         else "${roundData(length)} x ${roundData(cutDistance)} $suffix"
 
         val remainingSize = if (cutOrientation == "horizontal") "${roundData(length - cutDistance)} x ${roundData(width)} $suffix"
-        else "$length x ${width - cutDistance} $suffix"
+        else "${roundData(length)} x ${roundData(width - cutDistance)} $suffix"
 
         // Inputs
         addDataLine(layInputs, getString(R.string.input_cut_type), getString(R.string.proportional_cut))
@@ -240,10 +254,146 @@ class ResultsActivity : AppCompatActivity() {
         addDataLine(layInputs, getString(R.string.res_percentage), "$percentage%")
 
         // Outputs
-        //TODO: Resumen
         addDataLine(layResults, getString(R.string.res_piece1), "$portionSize (${portionArea.roundToInt()} $suffix²)")
         addDataLine(layResults, getString(R.string.res_piece2), "$remainingSize (${remainingArea.roundToInt()} $suffix²)")
     }
+
+    private fun calculatePreciseCutRects(
+        length: Double, width: Double, portions: Int
+    ): List<RectData> {
+        //Encuentra la mejor división en filas x columnas
+        var bestRows = 1
+        var bestCols = portions
+        var minDiff = Double.MAX_VALUE
+
+        for (rows in 1..portions) {
+            if (portions % rows == 0) {
+                val cols = portions / rows
+                val pw = width / cols
+                val ph = length / rows
+                val diff = kotlin.math.abs(pw - ph)
+                if (diff < minDiff) {
+                    minDiff = diff
+                    bestRows = rows
+                    bestCols = cols
+                }
+            }
+        }
+
+        //Calcula tamaño de cada pieza
+        val pieceW = width / bestCols
+        val pieceH = length / bestRows
+
+        //Genera lista de rects
+        val rects = mutableListOf<RectData>()
+        for (r in 0 until bestRows) {
+            for (c in 0 until bestCols) {
+                val left = (c * pieceW).toFloat()
+                val top = (r * pieceH).toFloat()
+                rects += RectData(
+                    left = left,
+                    top = top,
+                    right = left + pieceW.toFloat(),
+                    bottom = top + pieceH.toFloat()
+                )
+            }
+        }
+        return rects
+    }
+
+    private fun calculateDefinedCutRects(
+        length: Double, width: Double,
+        pieceLength: Double, pieceWidth: Double
+    ): List<RectData> {
+
+        val all = mutableListOf(
+            RectData(0f, 0f, width.toFloat(), length.toFloat(),
+                color = Color.LTGRAY)
+        )
+
+        val rows = (length / pieceLength).toInt()
+        val cols = (width  / pieceWidth ).toInt()
+        for (r in 0 until rows) {
+            for (c in 0 until cols) {
+                val l = c * pieceWidth
+                val t = r * pieceLength
+                all += RectData(
+                    left   = l.toFloat(),
+                    top    = t.toFloat(),
+                    right  = (l + pieceWidth).toFloat(),
+                    bottom = (t + pieceLength).toFloat(),
+                    color  = Color.BLUE
+                )
+            }
+        }
+
+        return all
+
+    }
+
+    private fun calculateReverseCutRects(
+        pieceLength: Double, pieceWidth: Double, portions: Int
+    ): List<RectData> {
+        // 1. Busca mejor rows×cols como en Precise
+        var bestRows = 1; var bestCols = portions; var minDiff = Double.MAX_VALUE
+        for (rows in 1..portions) {
+            if (portions % rows == 0) {
+                val cols = portions / rows
+                val totalL = pieceLength * rows
+                val totalW = pieceWidth  * cols
+                val diff = kotlin.math.abs(totalL - totalW)
+                if (diff < minDiff) {
+                    minDiff = diff
+                    bestRows = rows
+                    bestCols = cols
+                }
+            }
+        }
+
+        // 2. Genera posiciones ignorando el “objeto” original
+        return (0 until bestRows).flatMap { r ->
+            (0 until bestCols).map { c ->
+                val left = (c * pieceWidth).toFloat()
+                val top  = (r * pieceLength).toFloat()
+                RectData(
+                    left  = left,
+                    top   = top,
+                    right = left + pieceWidth.toFloat(),
+                    bottom= top  + pieceLength.toFloat()
+                )
+            }
+        }
+    }
+
+    private fun calculateProportionalCutRects(
+        length: Double, width: Double, percentage: Int
+    ): List<RectData> {
+        val ratio = percentage / 100.0
+        return if (length >= width) {
+            // corte horizontal
+            val cutH = (length * ratio).toFloat()
+            listOf(
+                // pieza 1 arriba
+                RectData(0f, 0f, width.toFloat(), cutH),
+                // resto abajo
+                RectData(0f, cutH, width.toFloat(), length.toFloat())
+            )
+        } else {
+            // corte vertical
+            val cutW = (width * ratio).toFloat()
+            listOf(
+                // pieza 1 izquierda
+                RectData(0f, 0f, cutW, length.toFloat()),
+                // resto derecha
+                RectData(cutW, 0f, width.toFloat(), length.toFloat())
+            )
+        }
+    }
+
+
+
+
+
 }
 
 

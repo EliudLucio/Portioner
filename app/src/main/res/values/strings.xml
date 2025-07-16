@@ -33,6 +33,7 @@
     <string name="bt_calculate">Calculate</string>
 
     <string name="toast_fill_required_fields">Please fill all required fields</string>
+    <style name="toast_error_defined_cut">The pieces can´t be bigger than the object</style>
 
     <string name="input_dimen_obj">Object Dimensions:</string>
     <string name="input_dimen_piece">Piece Dimensions:</string>
