@@ -24,7 +24,7 @@ Este proyecto surge como una solución práctica para procesos de corte en área
   <img src="images/example_2.png" width="300"/>
 </p>
 
-## ⚙️ Tecnología utilizada
+## Tecnología utilizada
 
 - Android (SDK 21+)
 - Kotlin
@@ -32,9 +32,9 @@ Este proyecto surge como una solución práctica para procesos de corte en área
 - Canvas personalizado
 - Diseño Material
 
-## 🚧 Estado actual
+## Estado actual
 
 El proyecto está en fase funcional, con énfasis en la lógica de cálculo y la visualización gráfica. Se planea seguir mejorando con más funcionalidades a futuro.
-## 🧑‍💻 Autor
+## Autor
 
 Desarrollado por **Eliud Lucio**, con enfoque en experiencia de usuario, visualización interactiva y diseño funcional.
