@@ -26,10 +26,10 @@ Portioner está disponible actualmente en los siguientes idiomas:
 ## Capturas de pantalla
 
 <p float="left">
-  <img src="images/example_1.png" width="300"/>
-  <img src="images/example_2.png" width="300"/>
-  <img src="images/example_3.png" width="300"/>
-  <img src="images/example_4.png" width="300"/>
+  <img src="images/example_1.jpg" width="300"/>
+  <img src="images/example_2.jpg" width="300"/>
+  <img src="images/example_3.jpg" width="300"/>
+  <img src="images/example_4.jpg" width="300"/>
 </p>
 
 ## Tecnología utilizada
