@@ -4,7 +4,7 @@
 
 ## Propósito del proyecto
 
-Este proyecto surge como una solución práctica para procesos de corte en áreas como carpintería, diseño industrial, cocina o cualquier situación donde sea necesario dividir una superficie en múltiples piezas. La meta es ofrecer una visualización clara, fácil de entender e interactiva del resultado del corte antes de ejecutarlo físicamente.
+Este proyecto surge como una solución para procesos de corte en áreas como carpintería, diseño industrial, cocina o cualquier situación donde sea necesario dividir una superficie en múltiples piezas. La meta es ofrecer una visualización clara, fácil de entender e interactiva del resultado del corte antes de ejecutarlo físicamente.
 
 ## Funcionalidades
 
@@ -12,7 +12,7 @@ Este proyecto surge como una solución práctica para procesos de corte en área
   - Corte definido
   - Corte preciso
   - Corte proporcional
-  - Corte reverso
+  - Corte inverso
 - Canvas dinámico para representar visualmente el resultado
 - Cálculo de área aprovechada vs. desperdicio
 - Interfaz adaptable con soporte para idioma y unidades configurables
