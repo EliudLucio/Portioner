@@ -4,7 +4,7 @@
 
 ## Propósito del proyecto
 
-Este proyecto surge como una solución práctica para procesos de corte en áreas como carpintería, diseño industrial, cocina o cualquier situación donde sea necesario dividir una superficie en múltiples piezas. La meta es ofrecer una visualización clara, facil de entender e interactiva del resultado del corte antes de ejecutarlo físicamente.
+Este proyecto surge como una solución práctica para procesos de corte en áreas como carpintería, diseño industrial, cocina o cualquier situación donde sea necesario dividir una superficie en múltiples piezas. La meta es ofrecer una visualización clara, fácil de entender e interactiva del resultado del corte antes de ejecutarlo físicamente.
 
 ## Funcionalidades
 
@@ -17,11 +17,19 @@ Este proyecto surge como una solución práctica para procesos de corte en área
 - Cálculo de área aprovechada vs. desperdicio
 - Interfaz adaptable con soporte para idioma y unidades configurables
 
+## Idiomas
+
+Portioner está disponible actualmente en los siguientes idiomas: 
+- Español
+- Inglés
+
 ## Capturas de pantalla
 
 <p float="left">
   <img src="images/example_1.png" width="300"/>
   <img src="images/example_2.png" width="300"/>
+  <img src="images/example_3.png" width="300"/>
+  <img src="images/example_4.png" width="300"/>
 </p>
 
 ## Tecnología utilizada
@@ -35,6 +43,7 @@ Este proyecto surge como una solución práctica para procesos de corte en área
 ## Estado actual
 
 El proyecto está en fase funcional, con énfasis en la lógica de cálculo y la visualización gráfica. Se planea seguir mejorando con más funcionalidades a futuro.
-## Autor
+
+## Créditos
 
 Desarrollado por **Eliud Lucio**, con enfoque en experiencia de usuario, visualización interactiva y diseño funcional.
