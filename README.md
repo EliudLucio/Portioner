@@ -47,3 +47,5 @@ El proyecto está en fase funcional, con énfasis en la lógica de cálculo y la
 ## Créditos
 
 Desarrollado por **Eliud Lucio**, con enfoque en experiencia de usuario, visualización interactiva y diseño funcional.
+
+> Este proyecto está disponible públicamente solo como muestra personal. No se aceptan issues ni pull requests.
