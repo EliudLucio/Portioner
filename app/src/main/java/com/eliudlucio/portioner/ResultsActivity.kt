@@ -322,7 +322,6 @@ class ResultsActivity : AppCompatActivity() {
                     top    = t.toFloat(),
                     right  = (l + pieceWidth).toFloat(),
                     bottom = (t + pieceLength).toFloat(),
-                    color  = Color.BLUE
                 )
             }
         }

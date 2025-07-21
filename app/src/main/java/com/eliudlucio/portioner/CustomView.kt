@@ -27,8 +27,8 @@ class CustomView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
     }
     private val strokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeWidth = 2f
-        color = 0xFF000000.toInt()
+        strokeWidth = 6f
+        color = 0xFF444444.toInt()
     }
 
     // Calcula la escala cuando cambia el tamaño de la vista

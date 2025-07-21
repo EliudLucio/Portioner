@@ -7,6 +7,6 @@ data class RectData(
     val top: Float,
     val right: Float,
     val bottom: Float,
-    val color: Int = Color.rgb(0,100,160)
+    val color: Int = Color.rgb(0,140,160)
 )
 
