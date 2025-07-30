@@ -42,10 +42,10 @@ Portioner está disponible actualmente en los siguientes idiomas:
 
 ## Estado actual
 
-El proyecto está en fase funcional, con énfasis en la lógica de cálculo y la visualización gráfica. Se planea seguir mejorando con más funcionalidades a futuro.
+El proyecto actualmente está en fase funcional, con énfasis en la lógica de cálculo y la visualización gráfica. Se planea seguir mejorando con más funcionalidades a futuro.
 
 ## Créditos
 
-Desarrollado por **Eliud Lucio**, con enfoque en experiencia de usuario, visualización interactiva y diseño funcional.
+Desarrollado por **Eliud Lucio**.
 
 > Este proyecto está disponible públicamente solo como muestra personal. No se aceptan issues ni pull requests.
